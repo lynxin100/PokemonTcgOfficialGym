@@ -23,9 +23,11 @@
   background: #eee;
 } */
 
+
+
 @font-face {
-  font-family: 'MyCustomFont';
-  src: url('css/font.ttf') format('truetype');
+  font-family: 'font123';
+  src: url('font.ttf') format('truetype');
 }
 
 .cd__intro{
@@ -170,7 +172,7 @@
 }
 
 .container-result div{
-	font-family: 'MyCustomFont', sans-serif;
+	font-family: 'font123', sans-serif;
    color: #FFF; 
 	margin-left: 10px;
 	margin-top: 20px;
