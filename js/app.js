@@ -430,10 +430,6 @@ selectHtml = `
     <script defer type="text/javascript" src="js/script.js"></script>
     <!-- <script defer type="text/javascript" src="js/app.js"></script> -->
     <style id="jsbin-css">
-		@font-face {
-		  font-family: 'font123';
-		  src: url('css/font.ttf') format('truetype');
-		}
 		
         * {
             margin: 0;
