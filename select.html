@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>宝可梦官方卡牌道馆|上海</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link type="text/css" href="css/index2.css" rel="stylesheet" />
+    <link type="text/css" href="css/demo.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script defer type="text/javascript" src="js/script.js"></script>
+    <!-- <script defer type="text/javascript" src="js/app.js"></script> -->
+    <style id="jsbin-css">
+		@font-face {
+		  font-family: 'font123';
+		  src: url('css/font.ttf') format('truetype');
+		}
+		
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .game_wrap {
+            width: 480px;
+            height: 80px;
+            box-sizing: content-box;
+            border-radius: 15px;
+            border: 20px solid #006cb8;
+            overflow: hidden;
+            margin: 10px auto;
+            box-shadow: 0px 0px 15px rgba(0, 202, 243, 0.5) inset
+        }
+
+        .game_item {
+			/* background-color: #fff; */
+            width: 16.666%;
+            height: 80px;
+            float: left;
+            border-left: 5px solid #006cb8
+        }
+
+            .game_item:first-child {
+                border-left: none
+            }
+
+            .game_item li {
+				color: #006cb8;
+                /* background-color: #b9e2f8; */
+                list-style: none;
+                width: 100%;
+                height: 80px;
+                line-height: 80px;
+                text-align: center;
+                position: relative;
+                font-size: 50px;
+            }
+    </style>
+
+</head>
+<body>
+    <div class="main">
+
+        <div class="titleLogo" id="Screen_on"><img src="img/logo1.png" style="width: 30rem;" /></div>
+        <main class="datediv cd__main" style="position:fixed; bottom:auto; top:0; right:0;margin-right: -5PX;margin-top: 45px;">
+            <a class="datenow" id="datenow"></a>
+        </main>
+        <main class="datediv cd__main" style="position:fixed; bottom:auto; top:0; right:0;margin-top: 70PX;">
+            <div id="clock" style="margin-top: 10px;"></div>
+        </main>
+        <a id="title-logo" href="#" class="titleLogo" style="margin-top: -9%;font-size: 70px;color: #006cb8;font-family: font123;" onclick="gotoMain()">鬼屋到你</a>
+
+        <div class="game_wrap" style="margin-top:6%">
+            <div class="game_item">
+                <ul></ul>
+            </div>
+            <div class="game_item">
+                <ul></ul>
+            </div>
+            <div class="game_item">
+                <ul></ul>
+            </div>
+            <div class="game_item">
+                <ul></ul>
+            </div>
+            <div class="game_item">
+                <ul></ul>
+            </div>
+            <div class="game_item">
+                <ul></ul>
+            </div>
+        </div>
+        <div style="text-align: center;">
+			<button id="btn_clear" class="btn btn-primary2" bindtap="start" style="font-size: 25px;" onclick="reset()">清空</button>
+            <button id="btn" class="btn btn-primary" bindtap="start" style="font-size: 25px;margin-left: 30px;">抽选</button>
+        </div>
+
+        <div class="center" style="margin-top: 3%;">
+            <div id="container-result" style="text-align: center;width: 90%;margin-left: 5%;">
+                <div id="result" class="container-result"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        var today = new Date();
+
+        var date = today.getDate();
+
+        var month = today.getMonth() + 1;
+
+        var year = today.getFullYear();
+
+        document.getElementById("datenow").innerHTML = year + "年" + month + "月" + date + "日";
+
+    </script>
+
+    <script id="jsbin-javascript">
+        const LuckGame = (function (win, doc) {
+            class Luck {
+                constructor(obj) {
+                    this.setting = {
+                        len: 10,  //奖品个数
+                        speed: 1000, //滚动时间
+                        circle: 5, //循环几圈
+                    };
+                    this.extend(this.setting, obj);
+                    this.$ul = doc.querySelectorAll('.game_wrap ul');
+                    this.$height = doc.querySelector('.game_item').offsetHeight;
+                    this.setList();
+                }
+                setList() {
+                    //填充li
+                    let html = '';
+                    for (let n = 0; n < this.setting.circle; n++) {
+                        for (let i = 0; i < this.setting.len; i++) {
+                            html += '<li>' + i + '</li>'; //图片这里自己添加img以及修改样式
+                        };
+                    };
+                    ;[].forEach.call(this.$ul, (o, i) => {
+                        o.innerHTML = html;
+                        //设置默认随机显示
+                        //o.style['transform'] = o.style['-webkit-transform'] = 'translate(0px, -' + Math.floor(Math.random() * this.setting.len) * this.$height + 'px) translateZ(0px)';
+                    });
+                }
+                start(arr, fn) {
+                    let that = this, countNum = 0;
+                    //开始抽奖
+                    ;[].forEach.call(that.$ul, (o, i) => {
+                        setTimeout(() => {
+                            var y = (arr[i] + that.setting.len * (that.setting.circle - 1)) * that.$height;
+                            o.style['-webkit-transition'] = that.setting.speed + 'ms ease';
+                            o.style['-webkit-transform'] = 'translate(0px, -' + y + 'px) translateZ(0px)'
+                        }, i * 10);
+                        o.addEventListener('webkitTransitionEnd', function () {
+                            this.style['-webkit-transition'] = '0ms ease';
+                            this.style['-webkit-transform'] = 'translate(0px, -' + arr[i] * that.$height + 'px) translateZ(0px)';
+                            countNum++;
+                            if (countNum == that.$ul.length) {
+                                fn && fn();
+                            }
+                        }, false);
+                    })
+                }
+                extend(n, n1) {
+                    for (let i in n1) { n[i] = n1[i] };
+                }
+            }
+            return Luck;
+        })(window, document);
+
+
+        var game = new LuckGame({
+            len: 10,
+            speed: 1000,
+            circle: 5,
+        });
+
+        let isGachaDisabled = false;
+
+        btn.onclick = function () {
+            // 还在转不能再按了
+            if (isGachaDisabled) {
+                return;
+            }
+
+            isGachaDisabled = true;
+
+            const result = pick();
+
+            if (result === null) {
+                // 没有不重复的数字了
+                console.log("全部号码已抽选");
+                return;
+            }
+
+            const numString = result.toString().padStart(6, "0");
+            const digitsArray = numString.split("");
+            const digits = digitsArray.map(Number);
+
+            game.start(digits, function () {
+                // alert('恭喜你中奖了')
+                setResults();
+
+                isGachaDisabled = false;
+            });
+        }
+
+
+    </script>
+
+</body>
+</html>

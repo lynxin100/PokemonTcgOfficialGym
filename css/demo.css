@@ -1,0 +1,180 @@
+ 
+/* *{ margin: 0; padding: 0;}
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+} */
+
+/* body{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+    
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-smoothing: antialiased;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
+  background: #eee;
+} */
+
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('css/font.ttf') format('truetype');
+}
+
+.cd__intro{
+   padding: 60px 30px;
+   margin-bottom: 15px;
+        flex-direction: column;
+
+}
+.cd__intro,
+.cd__credit{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    color: #333;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.cd__intro h1 {
+   font-size: 18pt;
+   padding-bottom: 15px;
+
+}
+.cd__intro p{
+   font-size: 14px;
+}
+
+.cd__action{
+   text-align: center;
+   display: block;
+   margin-top: 20px;
+}
+
+.cd__action a.cd__btn {
+  text-decoration: none;
+  color: #666;
+   border: 2px solid #666;
+   padding: 10px 15px;
+   display: inline-block;
+   margin-left: 5px;
+}
+.cd__action a.cd__btn:hover{
+   background: #666;
+   color: #fff;
+    transition: .3s;
+-webkit-transition: .3s;
+}
+.cd__action .cd__btn:before{
+  font-family: FontAwesome;
+  font-weight: normal;
+  margin-right: 10px;
+}
+.down:before{content: "\f019"}
+.back:before{content:"\f112"}
+
+.cd__credit{
+    padding: 12px;
+    font-size: 9pt;
+    margin-top: 40px;
+
+}
+.cd__credit span:before{
+   font-family: FontAwesome;
+   color: #e41b17;
+   content: "\f004";
+
+
+}
+.cd__credit a{
+   color: #333;
+   text-decoration: none;
+}
+.cd__credit a:hover{
+   color: #1DBF73; 
+}
+.cd__credit a:hover:after{
+    font-family: FontAwesome;
+    content: "\f08e";
+    font-size: 9pt;
+    position: absolute;
+    margin: 3px;
+}
+.cd__main{
+  background: #fff;
+  padding: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+.cd__main{
+    display: flex;
+    width: 300PX;
+}
+
+@media only screen and (min-width: 1360px){
+    .cd__main{
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto; 
+      padding: 24px;
+    }
+}
+
+
+
+.datenow  {
+  position: absolute;
+  top: 35%;
+  width: 100%;
+
+/*  text-shadow:     0 1px 0 hsl(174,5%,80%),
+	                 0 1px 0 hsl(174,5%,75%),
+	                 0 1px 0 hsl(174,5%,70%),
+	                 0 1px 0 hsl(174,5%,66%),
+	                 0 1px 0 hsl(174,5%,64%),
+	                 0 1px 0 hsl(174,5%,62%),
+	                 0 1px 0 hsl(174,5%,61%),
+	                 0 1px 0 hsl(174,5%,60%),
+	
+	                 0 0 1px rgba(0,0,0,.05),
+	                0 1px 1px rgba(0,0,0,.2),
+	                0 2px 1px rgba(0,0,0,.2),
+	               0 53px 2px rgba(0,0,0,.2),
+	              0 4px 2px rgba(0,0,0,.2),
+	              0 5px 2px rgba(0,0,0,.3); */
+}
+
+.datediv { font-size: 16px;font-family: font123;  text-transform: uppercase; color: #006cb8; text-align: center; letter-spacing: 1px; padding-top: 0%; }
+
+.container-result{
+   color: #FFF; 
+   font-size: 30px;
+   font-weight:bold;
+   height: auto;	/* 不要使用定高度(可不要)，后果自负 */
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+			align-items: center;
+}
+
+.container-result div{
+	font-family: 'MyCustomFont', sans-serif;
+   color: #FFF; 
+	margin-left: 10px;
+	margin-top: 20px;
+   width: 160px;
+   font-size: 40px;
+   font-weight:bold;
+}
